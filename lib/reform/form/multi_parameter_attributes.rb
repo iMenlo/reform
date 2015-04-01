@@ -36,7 +36,9 @@ Reform::Form.class_eval do
         if hour.blank? && minute.blank?
           Date.new(year.to_i, month.to_i, day.to_i) # TODO: test fails.
         else
-          args = [year, month, day, hour, minute].map(&:to_i)
+          Rails.logger.info "Debugging"
+          Rails.logger.info [year, month, day, hour, minute, 0]
+          args = [year, month, day, hour, minute, 0].map(&:to_i)
           Time.zone ? Time.zone.local(*args) :
             Time.new(*args)
         end
